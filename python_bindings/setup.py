@@ -29,7 +29,7 @@ if not os.path.isdir(libdir) and sys.platform.startswith("win"):
 library_file = os.path.join(libdir, "release", "libNonMetricSpaceLib.a")
 source_files = ['nmslib.cc', 'tensorflow/cpu_feature_guard.cc', 'tensorflow/cpu_info.cc']
 
-libraries = []
+libraries = ["z","gsl","gslcblas","stdc++","m"]
 extra_objects = []
 
 if os.path.exists(library_file):
@@ -67,10 +67,19 @@ ext_modules = [
         include_dirs=[os.path.join(libdir, "include"),
                       "tensorflow", 
                       get_pybind_include(),
-                      get_pybind_include(user=True)],
+                      get_pybind_include(user=True),
+                        '/global/homes/b/bhavay07/FastANI/src/',
+                        '/global/homes/b/bhavay07/gsl/include/',
+                        '/global/homes/b/bhavay07/gsl/lib/',
+                        '/global/homes/b/bhavay07/gsl/',],
         libraries=libraries,
         language='c++',
         extra_objects=extra_objects,
+        library_dirs = [
+                        '/global/homes/b/bhavay07/gsl/include/',
+                        '/global/homes/b/bhavay07/gsl/lib/',
+                        '/global/homes/b/bhavay07/gsl/',
+                        ]
     ),
 ]
 

@@ -22,6 +22,7 @@
 #include "factory/space/space_bit_jaccard.h"
 #include "factory/space/space_bregman.h"
 #include "factory/space/space_dummy.h"
+#include "factory/space/space_fastani.h"
 #include "factory/space/space_js.h"
 #include "factory/space/space_lp.h"
 #include "factory/space/space_scalar.h"
@@ -52,6 +53,10 @@ inline void initSpaces() {
   // Registering the Levensthein-distance: regular and normalized
   REGISTER_SPACE_CREATOR(int,   SPACE_LEVENSHTEIN,  CreateLevenshtein)
   REGISTER_SPACE_CREATOR(float, SPACE_LEVENSHTEIN_NORM,  CreateLevenshteinNormalized)
+
+  // Registering the FastANI
+  REGISTER_SPACE_CREATOR(float,   FASTANI,  CreateSpaceFastANI)
+  REGISTER_SPACE_CREATOR(float,   FASTAAI,  CreateSpaceFastAAI)
 
   // Registering Bregman divergences
   REGISTER_SPACE_CREATOR(float,  SPACE_KLDIV_FAST, CreateKLDivFast)
